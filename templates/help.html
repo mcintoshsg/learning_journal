@@ -1,0 +1,89 @@
+{% extends 'layout.html' %}
+{% block content %}
+    <div class="row">
+        <div class="col-12 menu"> 
+            <h1 class="faq-title">Help Topics</h1>
+        </div>
+    </div>        
+    <div class="row">
+        <div class="col-3 menu"> 
+            <h2 class="faq-heading">Adding a new Journal :</h2>
+        </div>
+        <div class="col-9 menu">     
+            <h3 class="faq-text">To add a new journal, click the Journal Icon and 
+                complete the form - Title, Time and Tags are mandatory fields 
+            </h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-3 menu"> 
+            <h2 class="faq-heading">Deleting a Journal :</h2>
+        </div>
+        <div class="col-9 menu">     
+            <h3 class="faq-text">Click the delete link to remove the associated 
+                journal. The page will refresh excluding the deleted journal
+            </h3>
+        </div>
+    </div> 
+    <div class="row">   
+        <div class="col-3 menu"> 
+            <h2 class="faq-heading">Editing a Journal :</h2>
+        </div>
+        <div class="col-9 menu">     
+            <h3 class="faq-text">To edit a journal click the edit link and amend
+                the journal. Clicking the cancel button or the journals link will 
+                cancel any edits and bring you back to the all journals view
+            </h3>
+        </div>
+    </div>
+    <div class="row">        
+        <div class="col-3 menu"> 
+            <h2 class="faq-heading">Time :</h2>
+        </div>
+        <div class="col-9 menu">     
+            <h3 class="faq-text">Time is a mandatory field and indicates the time
+                spent on the journal. This is in freefoirmn text
+            </h3>
+        </div>
+    </div>
+    <div class="row">        
+        <div class="col-3 menu"> 
+            <h2 class="faq-heading">Learnings :</h2>
+        </div>
+        <div class="col-9 menu">     
+            <h3 class="faq-text">Learnings is not manadatory. This indicates what 
+                learning were achieved on the journal entry
+            </h3>
+        </div>   
+    </div>
+    <div class="row">        
+        <div class="col-3 menu"> 
+            <h2 class="faq-heading">Resources :</h2>
+        </div>
+        <div class="col-9 menu">     
+            <h3 class="faq-text">Field indicates what resources were used
+            </h3>
+        </div>
+    </div>
+    <div class="row">               
+        <div class="col-3 menu"> 
+            <h2 class="faq-heading">Tags :</h2>
+        </div>
+        <div class="col-9 menu">     
+            <h3 class="faq-text">Muttiple tags can be entered split by a ',' e.g.
+                'Holiday, Scotland'. Without the comma the entry will seen as 
+                a single tag.
+                <p><br>A tag is also clickable. Once clicked all journals with the same 
+                tag will be shown
+                </p>
+            </h3>    
+        </div>           
+    </div> 
+    <div class="row">
+        <div class="col-1 menu"></div>
+        <div class="col-10 menu">  
+            <a href="{{ url_for('index') }}"><button>Home</button></a> 
+        </div>
+        <div class="col-1 menu"></div>
+{% endblock %}
+

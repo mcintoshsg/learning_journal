@@ -1,0 +1,97 @@
+{% extends 'layout.html' %}
+{% block content %}
+     
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="view" href="{{ url_for('journals') }}">Cancel Add</a>
+                </div>
+            </div>
+        </nav>
+        <div class="journal-entry">    
+            <form method='POST' action='' class='form'>
+                {{ form.hidden_tag() }}
+                <div class="form-group">
+                    {% if form.title.errors %}
+                        {% for error in form.title.errors %}{{ error }}{% endfor %}
+                    {% endif %}
+                    {{ form.title(class="form-control", placeholder="title") }}
+                </div>   
+                <div class="form-group">
+                    {% if form.entry_date.errors %}
+                        {% for error in form.entry_date.errors %}{{ error }}{% endfor %}
+                    {% endif %}
+                    {{ form.entry_date(class="form-control", placeholder="date") }}
+                </div>   
+                <div class="form-group" input type="datetime-local">
+                    {% if form.duration.errors %}
+                        {% for error in form.duration.errors %}{{ error }}{% endfor %}
+                    {% endif %}
+                    {{ form.duration(class="form-control", placeholder="duration") }}
+                </div>  
+                <div class="form-group">
+                    {% if form.learnings.errors %}
+                        {% for error in form.learnings.errors %}{{ error }}{% endfor %}
+                    {% endif %}
+                    {{form.learnings(class="form-control", rows=10, placeholder="what I have learned") }}
+                </div>  
+                <div class="form-group" input type="url" name ="homepage">
+                    {% if form.resources.errors %}
+                        {% for error in form.resources.errors %}{{ error }}{% endfor %}
+                    {% endif %}
+                    {{ form.resources(class="form-control", placeholder="resources to remember") }}
+                </div>  
+                <div class="form-group">
+                    <div class="row">
+                        {% if form.tags.errors %}
+                            {% for error in form.tags.errors %}{{ error }}{% endfor %}
+                        {% endif %}
+                        {{ form.tags(class="form-control", placeholder="tags") }}    
+                       
+                        <!-- <div class="grid-25"> 
+                            <button type ="button" onclick="document.getElementById('myModal').style.display='block'" class="small">Add Tags</button>
+                        </div>     -->
+                    </div>  
+                </div>    
+                
+                <div id="myModal" class="modal">
+                    <div class="modal-content">
+                        <header class="modal-header"> 
+                            <span onclick="document.getElementById('myModal').style.display='none'" 
+                                class="close">&times;</span>
+                            <h2>Add New Tags</h2>
+                        </header>
+                        
+                        <div class="modal-body">
+                            
+                               <section>
+                                        <h1>Please select tags</h1>
+                                        <div class='row'>
+                                            <div class='col-12'>
+                                                <input id='' type='checkbox'>
+                                            </div>
+                                        </div>        
+                                        <div class='row'>
+                                                <div class='col-12'>
+                                                    <input id='' type='checkbox'>
+                                                </div>
+                                            </div>        
+                                            <div class='row'>
+                                                    <div class='col-12'>
+                                                        <input id='' type='checkbox'>
+                                                    </div>
+                                                </div>            
+                                </section>
+                            <div>    
+                                <button type ="button" onclick='' class="small">Submit</button>
+                            </div>    
+                        </div>    
+                    </div>    
+                </div>       
+                    
+            
+                <div class="form-group">
+                    <button type='submit' id='submit'>Post Journal</button> 
+                </div>    
+        
+{% endblock %}

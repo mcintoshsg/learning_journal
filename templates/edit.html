@@ -1,0 +1,55 @@
+{% extends 'layout.html' %}
+{% from 'macros.html' import field_error, render_field %}
+{% block content %}
+     
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                <a class="view" href="{{ url_for('journals') }}">View Journals</a>
+                </div>
+             </div>
+        </nav>
+        <div class="journal-entry">    
+            <form method='POST' action='' class='form'>
+                {{ form.hidden_tag() }}
+                <div class="form-group">
+                    {% if form.title.errors %}
+                        {% for error in form.title.errors %}{{ error }}{% endfor %}
+                    {% endif %}
+                    {{ form.title(class="form-control", autofocus=true, value=entry.title) }}
+                </div>   
+                <div class="form-group">
+                    {% if form.entry_date.errors %}
+                        {% for error in form.entry_date.errors %}{{ error }}{% endfor %}
+                    {% endif %}
+                </div>   
+                <div class="form-group">
+                    {% if form.duration.errors %}
+                        {% for error in form.duration.errors %}{{ error }}{% endfor %}
+                    {% endif %}
+                    {{ form.duration(class="form-control", value=entry.duration) }}
+                </div>  
+                <div class="form-group">
+                    {% if form.learnings.errors %}
+                        {% for error in form.learnings.errors %}{{ error }}{% endfor %}
+                    {% endif %}
+                    {{ form.learnings(value=entry.learnings) }}
+                     <!-- <textarea rows="4" cols="50" type="text">{{entry.learnings}}</textarea> -->
+                </div>  
+                <div class="form-group">
+                    {% if form.resources.errors %}
+                        {% for error in form.resources.errors %}{{ error }}{% endfor %}
+                    {% endif %}
+                    {{ form.resources(class="form-control", value=entry.resources) }}
+                </div>  
+                <div class="form-group">
+                    {% if form.tags.errors %}
+                        {% for error in form.tags.errors %}{{ error }}{% endfor %}
+                    {% endif %}
+                    {{ form.tags(class="form-control", value=entry.tags) }}
+                </div>  
+                <div class="form-group">
+                    <button type='submit' id='submit'>Update Entry</button> 
+                </div>    
+        </div>
+{% endblock %}

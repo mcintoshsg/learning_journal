@@ -1,0 +1,29 @@
+{% extends 'layout.html' %}
+{% block content %}  
+{% if tag %}  
+    <h1 class="journals-title">Journals / #{{ tag }} </h1>
+{% else %}
+    <h1 class="journals-title">All Journals</h1>
+{% endif %}    
+{% for journal in stream %}
+    <div class="row">
+        <div class="col-8 menu"> 
+        <a href="{{ url_for('details',title=journal.title) }}" class="details">{{ journal.title }}</a></b>
+            <b style="color:#FFB770;">{{ journal.entry_date.strftime('%d-%m-%Y') }} </b>
+        </div>    
+        <div class="col-4 menu">         
+            <a href="{{ url_for('edit',title=journal.title) }}" class="edit">Edit</a>
+            <a href="{{ url_for('delete',title=journal.title) }}" class="delete">Delete</a>
+        </div>
+    </div>    
+    <div class="row">
+        <div class="col-12 menu">
+            {% if journal.learnings|length > 100 %}
+                <h2 >{{ journal.learnings[:100] }} ...<h2>    
+            {% else %}
+                    <h2>{{ journal.learnings }}<h2>    
+            {% endif %}   
+        </div>    
+    </div>      
+{% endfor %}
+{% endblock %}

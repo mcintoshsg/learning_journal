@@ -1,0 +1,57 @@
+{% extends 'layout.html' %}
+{% block content %}
+<div class="row">
+    <div class="col-12 menu"> 
+        <a class="view" href="{{ url_for('journals') }}">View Journals</a>
+    </div>
+</div>
+        
+{% for entry in stream %}
+    
+    <div class="row"> 
+        <div class="col-9 menu" > 
+            <h2 class="details-title">
+               Title: {{ entry.title }} 
+            </h2>
+        </div>    
+        <div class="col-3 menu" >     
+            <h2 class="details-title">
+                Time Spent : {{ entry.duration }} 
+            </h2>
+        </div>    
+    </div>
+
+    <div class="row">
+        <div class="col-1 menu"></div>
+            <div class="col-10 menu"> 
+                <h2 class="details-heading">Learnings :</h2> {{ entry.learnings }}
+            </div>
+    </div>  
+
+    <div class="row">
+        <div class="col-1 menu"></div>
+            <div class="col-2 menu"> 
+                <h2 class="details-heading">Resources : </h2> 
+            </div>
+            <div class="col-9 menu">   
+                {% for url in entry.resources | split_string %}
+                    <a class='view' href="#">{{ url }}</a>
+                {% endfor %}
+            </div>        
+    </div>    
+
+    <div class="row">
+        <div class="col-1 menu"></div>
+            <div class="col-2 menu">
+                <h2 class="details-heading">Tags :</h2>
+            </div>
+            <div class="col-9 menu">   
+                {% for t in entry.tags | split_string %}
+                    <a class='view' href="{{ url_for('tags', tag=t) }}">#{{ t }}</a>
+                {% endfor %}
+            </div>        
+    </div>   
+        
+    {% endfor %}
+{% endblock %}
+        
